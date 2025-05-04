@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+    networks:
+      - goexpert-final-challenge-1
+
+  app:
+    hostname: goexpert-final-challenge-1
+    build: .
+    working_dir: /goexpert-final-challenge-1
+    command: go run main.go
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    ports:
+      - 8080:8080
+    networks:
+      - goexpert-final-challenge-1
+
+networks:
+  goexpert-final-challenge-1:
+    driver: bridge
+    name: goexpert-final-challenge-1
+            
