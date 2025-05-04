@@ -11,7 +11,8 @@ services:
     hostname: goexpert-final-challenge-1
     build: .
     working_dir: /goexpert-final-challenge-1
-    command: go run main.go
+    volumes:
+      - .:/goexpert-final-challenge-1
     env_file:
       - .env
     depends_on:
